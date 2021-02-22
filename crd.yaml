@@ -1,0 +1,44 @@
+# A simple CRD to deploy a demo website from a git repo
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: test.relationalai.info
+spec:
+  scope: Namespaced
+  group: relationalai.info
+  versions:
+    - name: v1
+      served: true
+      storage: true
+  names:
+    kind: RelationalAI
+    plural: test
+    singular: test
+    shortNames:
+      - rl
+  additionalPrinterColumns:
+    - name: Replicas
+      type: string
+      priority: 0
+      JSONPath: .spec.replicas
+      description: Amount of replicas
+    - name: Image
+      type: string
+      priority: 0
+      JSONPath: .spec.image
+      description: Dockerhub image
+    - name: Port
+      type: integer
+      priority: 0
+      JSONPath: .spec.port
+      description: Image port
+    - name: CPU
+      type: integer
+      priority: 0
+      JSONPath: .spec.cpu
+      description: Test CPU
+    - name: RAM
+      type: integer
+      priority: 0
+      JSONPath: .spec.ram
+      description: Test RAM

@@ -1,0 +1,10 @@
+apiVersion: relationalai.info/v1
+kind: RelationalAI
+metadata:
+  name: instance02
+spec:
+  replicas: 1
+  image: "paulbouwer/hello-kubernetes:1.8"
+  port: 8080
+  cpu: 1
+  ram: 128
